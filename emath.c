@@ -15,7 +15,7 @@ extern "C"  // Use C linkage in C++ programs
 #endif
 
 void main(void) {
-  // This function is an anti-standalone shield, comment out as needed.
+  // This function is an anti-standalone shield, comment out if needed.
   printf("This is not a standalone program.\n");
   printf("Include this library into your C program to use it.\n");
   return(0);
