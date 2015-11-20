@@ -11,15 +11,23 @@
  */
 
 #if defined(__cplusplus)
-extern "C"  // Use C linkage
+extern "C"  // Use C linkage in C++ programs
 #endif
 
 void main(void) {
   // This function is an anti-standalone shield, comment out as needed.
   printf("This is not a standalone program.\n");
-  printf("Include this lib into your C program to use it.\n");
+  printf("Include this library into your C program to use it.\n");
   return(0);
 }
+
+/*
+ * These typedefs are here for quick changing of variable types
+ */
+
+typedef int voltage;
+typedef int current;
+typedef int power;
 
 /*
  * ohmslaw - solves ohm's law for a NULL value
@@ -70,7 +78,7 @@ int confohmslaw(int i, int v, int r) {
  * getvoltage - calculates voltage based upon a given current and resistance
  */
 
-int getvoltage(int i, int r) {
+voltage getvoltage(int i, int r) {
   int retval;
   retval=ohmslaw(i, NULL, r);
   return(retval);
@@ -80,7 +88,7 @@ int getvoltage(int i, int r) {
  * getcurrent - calculates current based upon voltage and resistance
  */
 
-int getcurrent(int v, int r) {
+current getcurrent(int v, int r) {
   int retval;
   retval=ohmslaw(NULL, v, r);
   return(retval);
@@ -90,7 +98,7 @@ int getcurrent(int v, int r) {
  * power - calculates power in watts based on current and voltage
  */
 
-int power(int i, int v) {
+power power(int i, int v) {
   int retval;
   retval=v * i; // I have heard this called apparent power, or VA (volt-amps). Is this an AC-only thing?
   return(retval);
@@ -100,11 +108,35 @@ int power(int i, int v) {
  * dissipated - calculates dissipated energy (watts) with a given input vlots, amps and an output.
  */
 
-int dissipated(int v1, int i1, int v2, int i2) {
+power dissipated(int v1, int i1, int v2, int i2) {
   int retval, inpower, outpower;
   inpower = power(i1, v1);
   outpower = power(i2, v2);
   retval = inpower - outpower;
+  return(retval);
+}
+
+/*
+ * rms_voltage - calculates RMS voltages in AC circuits
+ */
+
+voltage rms_voltage(voltage peak_hi, voltage peak_lo) {
+  // I think this is how you calculate RMS, but this may need to be changed.
+  // This function was made when I did not have internet access to look this up.
+  voltage retval;
+  retval = sqrt(peak_hi + peak_lo / 2);
+  retval = retval * retval;
+  return(retval);
+}
+
+/*
+ * rms_current - calculates RMS current values in AC circuits
+ */
+
+current rms_current(peak_hi, peak_lo) {
+  current retval;
+  retval = sqrt(peak_hi + peak_lo / 2);
+  retval = retval * retval;
   return(retval);
 }
 
