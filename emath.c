@@ -4,7 +4,7 @@
 
 /*
  * This is a library of C functions to caluculate electonic formulas such as
- * Ohm's Law and reactance.
+ * Ohm's Law and power.
  *
  * These functions return -1 in the case of an error or incorrect calculation. Any other value is considered
  * correct.
