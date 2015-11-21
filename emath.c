@@ -133,7 +133,7 @@ voltage rms_voltage(voltage peak_hi, voltage peak_lo) {
  * rms_current - calculates RMS current values in AC circuits
  */
 
-current rms_current(peak_hi, peak_lo) {
+current rms_current(current peak_hi, current peak_lo) {
   current retval;
   retval = sqrt(peak_hi + peak_lo / 2);
   retval = retval * retval;
