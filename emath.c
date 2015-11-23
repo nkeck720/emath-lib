@@ -28,6 +28,7 @@ void main(void) {
 typedef int voltage;
 typedef int current;
 typedef int power;
+typedef int resistance;
 
 /*
  * ohmslaw - solves ohm's law for a NULL value
@@ -133,10 +134,10 @@ voltage rms_voltage(voltage peak_hi, voltage peak_lo) {
  * rms_current - calculates RMS current values in AC circuits
  */
 
+
 current rms_current(current peak_hi, current peak_lo) {
   current retval;
   retval = sqrt(peak_hi + peak_lo / 2);
   retval = retval * retval;
   return(retval);
 }
-

@@ -9,6 +9,7 @@ extern "C"
 typedef int voltage;
 typedef int current;
 typedef int power;
+typedef int resistance;
 
 // Function prototypes
 
