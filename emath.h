@@ -1,5 +1,5 @@
 #if !defined(EMATH_H)
-#define EMATH_H // to protect against multiple includes
+#define EMATH_H     // to protect against multiple includes
 
 #if defined(__cplusplus)
 extern "C"
