@@ -122,8 +122,6 @@ power dissipated(int v1, int i1, int v2, int i2) {
  */
 
 voltage rms_voltage(voltage peak_hi, voltage peak_lo) {
-  // I think this is how you calculate RMS, but this may need to be changed.
-  // This function was made when I did not have internet access to look this up.
   voltage retval;
   retval = sqrt(peak_hi + peak_lo / 2);
   retval = retval * retval;
