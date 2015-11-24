@@ -30,7 +30,9 @@ typedef int current;
 typedef int power;
 typedef int resistance;
 
-/*
+/*  // I think this is ho  // I think this is how you calculate RMS, but this may need to be changed.
+  // This function was made when I did not have internet access to look this up.w you calculate RMS, but this may need to be changed.
+  // This function was made when I did not have internet access to look this up.
  * ohmslaw - solves ohm's law for a NULL value
  */
 
@@ -106,7 +108,7 @@ power power(int i, int v) {
 }
 
 /*
- * dissipated - calculates dissipated energy (watts) with a given input vlots, amps and an output.
+ * dissipated - calculates dissipated energy (watts) with a given input vlots, amps and output current/volts.
  */
 
 power dissipated(int v1, int i1, int v2, int i2) {
