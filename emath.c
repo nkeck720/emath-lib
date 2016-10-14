@@ -25,17 +25,17 @@ int main(void) {
  * These typedefs are here for quick changing of variable types
  */
 
-typedef int voltage;
-typedef int current;
-typedef int power;
-typedef int resistance;
+typedef float voltage;
+typedef float current;
+typedef float power;
+typedef float resistance;
 
 /* 
  * ohmslaw - solves ohm's law for a NULL value
  */
 
-int ohmslaw(int i, int v, int r) {
-  int retval;
+float ohmslaw(float i, float v, float r) {
+  float retval;
   if(i == NULL && v == NULL || i == NULL && r == NULL || v == NULL && r == NULL) {
     // Can't solve for multiple values
     return(-1);
@@ -62,9 +62,9 @@ int ohmslaw(int i, int v, int r) {
  * confohmslaw - confirms to see if an Ohm's Law calculation was correct
  */
 
-int confohmslaw(int i, int v, int r) {
-  int retval;
-  int temp;
+float confohmslaw(float i, float v, float r) {
+  float retval;
+  float temp;
   temp = v / r;
   if(i == temp) {
     retval = 0;
@@ -79,8 +79,8 @@ int confohmslaw(int i, int v, int r) {
  * getvoltage - calculates voltage based upon a given current and resistance
  */
 
-voltage getvoltage(int i, int r) {
-  int retval;
+voltage getvoltage(current i, resistance r) {
+  voltage retval;
   retval=ohmslaw(i, NULL, r);
   return(retval);
 }
@@ -89,8 +89,8 @@ voltage getvoltage(int i, int r) {
  * getcurrent - calculates current based upon voltage and resistance
  */
 
-current getcurrent(int v, int r) {
-  int retval;
+current getcurrent(voltage v, resistance r) {
+  current retval;
   retval=ohmslaw(NULL, v, r);
   return(retval);
 }
@@ -99,8 +99,8 @@ current getcurrent(int v, int r) {
  * power - calculates power in watts based on current and voltage
  */
 
-power power(int i, int v) {
-  int retval;
+power power(current i, voltage v) {
+  power retval;
   retval=v * i; // I have heard this called apparent power, or VA (volt-amps). Is this an AC-only thing?
   return(retval);
 }
@@ -109,8 +109,8 @@ power power(int i, int v) {
  * dissipated - calculates dissipated energy (watts) with a given input vlots, amps and output current/volts.
  */
 
-power dissipated(int v1, int i1, int v2, int i2) {
-  int retval, inpower, outpower;
+power dissipated(voltage v1, current i1, voltage v2, current i2) {
+  power retval, inpower, outpower;
   inpower = power(i1, v1);
   outpower = power(i2, v2);
   retval = inpower - outpower;
